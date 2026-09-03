@@ -9,7 +9,9 @@ public class Exercicio04 {
         String[] mes = { "Jan", "Fev", "Mar", "Abr", "Mai", "Jun"};
         String[] categoria = new String[3];
         double [][] venda = new double[categoria.length][mes.length];
-        double total;
+        double total,media = 0;
+        double maiorVenda = 0;
+        int indiceMes = 0;
 
         //leitura das categorias
         for (int i = 0; i < categoria.length; i++){
@@ -34,7 +36,23 @@ public class Exercicio04 {
                 total += venda[i][j];
             }
             System.out.print(categoria[i] + "  |  ");
-            System.out.println(String.format("R$ %.2f", total));
+            System.out.print(String.format("R$ %.2f", total)+ "  |  ");
+            System.out.println(String.format("R$ %.2f", media));
         }
+
+        //mes com o maior total de vendas
+        System.out.println("\nMês com o maior total de vendas");
+        for (int j = 0; j < mes.length; j++) {
+            total = 0;
+            for (int i = 0; i < venda.length; i++) {
+                total += venda [i][j];
+            }
+            if (total > maiorVenda) {
+                maiorVenda = total;
+                indiceMes = j;
+            }
+        }
+        System.out.println(String.format("Maior total de vendas mensal R$ %.2f", maiorVenda));
+        System.out.println("Mês com o maior total de vendas --> " + mes[indiceMes]);
     }
 }
